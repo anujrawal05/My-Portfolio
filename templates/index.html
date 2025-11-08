@@ -1,0 +1,438 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="desktop-view">
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-text">
+                <span class="spiritual-tag">Namaste</span>
+                <h1>I am Anuj Rawal</h1>
+                <div class="hero-typewriter">
+                    I am <span class="typed-text"></span><span class="cursor">|</span>
+                </div>
+                <p style="opacity: 0.9; margin-bottom: 40px; font-size: 1.2rem; max-width: 600px;">
+                    "Engineer by pursuit, storyteller by soul. On a journey to unite science, spirituality, and creativity into one meaningful life."
+                </p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Anuj Profile" class="floating-img">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section-pad">
+        <div class="container">
+            <h2 class="section-title" data-heading="ABOUT">My Vision</h2>
+            <div class="about-split">
+                <div class="about-card">
+                    <h3><i class="fas fa-rocket"></i> The Pursuit</h3>
+                    <p>I am currently pursuing a <strong>B.Tech in Electronics and Communication Engineering</strong> at Shri Vaishnav Vidyapeeth Vishwavidyalaya, Indore (2024-2028). My academic focus is on embedded systems and cutting-edge technologies.</p>
+                    <h4 style="margin-top:20px; color: var(--primary);">Future Goal</h4>
+                    <p>I aspire to work in the semiconductor industry (aiming for giants like <strong>NVIDIA</strong>), contributing to innovative chip design. Long-term, I aim to bridge my technical expertise with my creative passions as a self-employed innovator and author.</p>
+                </div>
+                <div class="about-card spiritual">
+                    <h3><i class="fas fa-feather-alt"></i> The Soul</h3>
+                    <p>Beyond circuits, I am a storyteller deeply invested in <strong>Mythological Research</strong> and <strong>Spiritual Science</strong>. I believe that to find the right path, you must first travel through a thousand wrong ones.</p>
+                    <h4 style="margin-top:20px; color: var(--accent);">Interests</h4>
+                    <div class="tags" style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: #eee; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem;">Public Speaking & Debating</span>
+                        <span style="background: #eee; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem;">Event Management</span>
+                        <span style="background: #eee; padding: 5px 10px; border-radius: 15px; font-size: 0.8rem;">Photography & Videography</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad bg-light">
+        <div class="container">
+             <h2 class="section-title" data-heading="SKILLS">Expertise</h2>
+             <div class="project-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                 <div class="project-card" style="padding: 30px;">
+                     <h3 style="color: var(--primary); margin-bottom: 20px;"><i class="fas fa-code"></i> Technical</h3>
+                     <ul style="list-style: none; line-height: 2;">
+                         <li><strong>Languages:</strong> Python, HTML, CSS</li>
+                         <li><strong>AI & Tools:</strong> AI Prompting, AI Web Development</li>
+                         <li><strong>Hardware:</strong> Drone Tech (UAV Basics), Arduino sensors</li>
+                     </ul>
+                 </div>
+                 <div class="project-card" style="padding: 30px; border-top: 4px solid var(--accent);">
+                     <h3 style="color: var(--accent); margin-bottom: 20px;"><i class="fas fa-paint-brush"></i> Creative</h3>
+                     <ul style="list-style: none; line-height: 2;">
+                         <li>Story Writing & Content Creation</li>
+                         <li>Video Editing & Direction</li>
+                         <li>Photography & Creative Direction</li>
+                         <li>Spiritual & Public Speaking</li>
+                     </ul>
+                 </div>
+                 <div class="project-card" style="padding: 30px; border-top: 4px solid var(--dark);">
+                     <h3 style="color: var(--dark); margin-bottom: 20px;"><i class="fas fa-users"></i> Soft Skills</h3>
+                     <ul style="list-style: none; line-height: 2;">
+                         <li>Research & Analysis</li>
+                         <li>Event Management</li>
+                         <li>Social Media Handling</li>
+                         <li>Team Collaboration & Diplomacy</li>
+                     </ul>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <section class="parallax-banner">
+        <div class="container quote-box">
+            <i class="fas fa-quote-left"></i>
+            <p class="quote-text">"To find the right path, you must first travel through a thousand wrong ones."</p>
+        </div>
+    </section>
+
+    <section id="resume" class="section-pad">
+        <div class="container">
+            <h2 class="section-title" data-heading="JOURNEY">Experience & Involvements</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px;">
+                
+                <div class="about-card">
+                    <h3 style="color: var(--primary); margin-bottom: 20px;">Academic & Technical</h3>
+                    <ul style="list-style: none; gap: 20px; display: flex; flex-direction: column;">
+                        <li>
+                            <strong>B.Tech (Electronics & Comm. Engineering)</strong><br>
+                            <span style="opacity: 0.7;">Shri Vaishnav Vidyapeeth Vishwavidyalaya (2024-2028)</span>
+                        </li>
+                        <li>
+                            <strong>Competitor: Kaushal 7.0 (Web Design)</strong><br>
+                            <span style="opacity: 0.7;">Showcased creative and technical web design skills in a competitive environment.</span>
+                        </li>
+                        <li>
+                            <strong>Workshop Participant: IIT Indore (Drone Tech)</strong><br>
+                            <span style="opacity: 0.7;">Learned basics of UAV design, sensors, and flight control.</span>
+                        </li>
+                        <li>
+                            <strong>Google Developer Group Workshop</strong><br>
+                            <span style="opacity: 0.7;">Hands-on with Python, HTML, CSS; built a basic AI chatbot prototype.</span>
+                        </li>
+                        <li>
+                            <strong>Universal Informatics Workshop</strong><br>
+                            <span style="opacity: 0.7;">Mastered foundational concepts of Python programming.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="about-card spiritual">
+                    <h3 style="color: var(--accent); margin-bottom: 20px;">Leadership & Creativity</h3>
+                    <ul style="list-style: none; gap: 20px; display: flex; flex-direction: column;">
+                         <li>
+                            <strong>Delegate: SVVVIMUN (2024 & 2025)</strong><br>
+                            <span style="opacity: 0.7;">Represented leaders at Lok Sabha & AIPPM. Honed diplomacy skills.</span>
+                        </li>
+                        <li>
+                            <strong>Member: Sandarsh (The Media Club)</strong><br>
+                            <span style="opacity: 0.7;">Worked on photography, video editing, and creative content writing.</span>
+                        </li>
+                        <li>
+                            <strong>Member: Natraj (The Dance Club)</strong><br>
+                            <span style="opacity: 0.7;">Managed events and shot promotional videos.</span>
+                        </li>
+                        <li>
+                            <strong>Volunteer: Anveshan 2024</strong><br>
+                            <span style="opacity: 0.7;">Assisted in event coordination and media coverage.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="books" class="section-pad">
+        <div class="container">
+            <h2 class="section-title" data-heading="AUTHOR">Published Work</h2>
+            
+            <div class="book-showcase" data-aos="fade-up">
+                <div class="book-wrapper book-trigger">
+                    <div class="click-hint">
+                        <span>Click to Open Book!</span>
+                        <i class="fas fa-arrow-down bounce"></i>
+                    </div>
+                    <div class="book-3d-trigger">
+                        <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Sanatan Book Cover">
+                    </div>
+                </div>
+                
+                <div class="book-info">
+                    <span class="book-tag">DEBUT BOOK (2025)</span>
+                    <h3>Sanatan: The Eternal Way of Living</h3>
+                    <p>
+                        A thought-provoking exploration that bridges the wisdom of ancient Sanatan Dharma with the clarity of modern science. It invites readers to question existing beliefs and find balance between logic and spirituality.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <div>
+                            <h5>Publisher</h5>
+                            <p style="font-weight: 700; margin-bottom: 0;">Integrity Education</p>
+                        </div>
+                        <div>
+                             <h5>Availability</h5>
+                            <p style="font-weight: 700; margin-bottom: 0;">Amazon & Flipkart</p>
+                        </div>
+                    </div>
+                    <a href="#" target="_blank" class="btn btn-primary">Read Preview</a>
+                </div>
+            </div>
+
+            <div class="book-showcase" data-aos="fade-up" style="margin-top: 60px;">
+                <div class="book-wrapper">
+                    <div class="book-3d-trigger" style="cursor: default;">
+                        <img src="{{ url_for('static', filename='images/vankari.jpg') }}" alt="The Vankari Debt Cover">
+                    </div>
+                </div>
+                
+                <div class="book-info">
+                    <span class="book-tag" style="background: var(--dark); color: var(--white); border: none;">UPCOMING RELEASE</span>
+                    <h3>The Vankari Debt: Volume 1</h3>
+                    <p>
+                        A dark thriller set against the historical backdrop of Indore and Patalpani. Five souls, bound by deadly secrets and a vengeful hunter, are forced into an ancient cave system where they must face the chilling truths of the Vankari tribe.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);">
+                        <div>
+                            <h5>Genre</h5>
+                            <p style="font-weight: 700; margin-bottom: 0;">Dark Thriller / Mystery</p>
+                        </div>
+                        <div>
+                             <h5>Status</h5>
+                            <p style="font-weight: 700; margin-bottom: 0;">Coming Soon (2026)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects" class="section-pad">
+        <div class="container">
+            <h2 class="section-title" data-heading="PORTFOLIO">Creations</h2>
+            <div class="project-grid">
+                
+                <div class="project-card-placeholder">
+                    <div class="flippable-card" id="card-1">
+                        <div class="card-front">
+                            <div class="project-img">
+                                <img src="{{ url_for('static', filename='images/project1.jpg') }}" alt="Short Film">
+                            </div>
+                            <div class="project-content">
+                                <span class="project-category" style="background: #e63946;">Film</span>
+                                <h3>Short Film on Ragging (2025)</h3>
+                                <p>Wrote a suspenseful short film spreading awareness about ragging and mental health.</p>
+                                <button class="btn-text flip-trigger" style="color: var(--accent); margin-top: auto;">Know More <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-back-bg">
+                                <img src="{{ url_for('static', filename='images/project1.jpg') }}" alt="Background">
+                            </div>
+                            <div class="card-back-content">
+                                <i class="fas fa-times close-card"></i>
+                                <h3>The Witness</h3>
+                                <p><strong>"The Witness"</strong> is a short film full of thrill and suspense that I wrote in 2025. The story delves into the harsh realities of ragging in educational institutions.</p>
+                                <p>As a writer passionate about gripping narratives, I crafted this script to keep viewers on the edge of their seats while delivering a powerful social message about silence and complicity.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card-placeholder">
+                    <div class="flippable-card" id="card-2">
+                        <div class="card-front">
+                             <div class="project-img">
+                                <img id="project2-slider" 
+                                     src="{{ url_for('static', filename='images/project2.jpg') }}" 
+                                     data-img1="{{ url_for('static', filename='images/project2.jpg') }}"
+                                     data-img2="{{ url_for('static', filename='images/project2-2.jpg') }}"
+                                     data-img3="{{ url_for('static', filename='images/project2-3.jpg') }}"
+                                     alt="Smart Dustbin">
+                            </div>
+                            <div class="project-content">
+                                <span class="project-category">Hardware</span>
+                                <h3>Smart Dustbin Model</h3>
+                                <p>Designed and demonstrated a technical prototype using Ultrasonic Sensors for automated use.</p>
+                                <button class="btn-text flip-trigger" style="color: var(--accent); margin-top: auto;">Know More <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-back-bg">
+                                <img src="{{ url_for('static', filename='images/project2.jpg') }}" alt="Background">
+                            </div>
+                            <div class="card-back-content">
+                                <i class="fas fa-times close-card"></i>
+                                <h3>Automated Hygiene</h3>
+                                 <p>Built using an <strong>Arduino Uno</strong>, <strong>Ultrasonic Sensors</strong>, and a <strong>Servo Motor</strong>.</p>
+                                 <p>When the sensor detects a hand nearby, it signals the servo motor to automatically open the lid, allowing for a completely touch-free experience that reduces contact with germ-prone surfaces.</p>
+                                 <a href="https://www.linkedin.com/posts/anujrawal-ar_ece-arduino-ultrasonicsensor-activity-7388102224947671040-7HwI" target="_blank" class="btn btn-primary" style="margin-top: 20px;">
+                                     <i class="fab fa-linkedin"></i> Watch Video
+                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card-placeholder">
+                    <div class="flippable-card" id="card-3">
+                        <div class="card-front">
+                            <div class="project-img">
+                                <img src="{{ url_for('static', filename='images/eyantra.png') }}" alt="e-Yantra Robotics">
+                            </div>
+                            <div class="project-content">
+                                <span class="project-category" style="background: #6f42c1;">Coding</span>
+                                <h3>e-Yantra Competition</h3>
+                                <p>Participating in IIT Bombay's robotics competition, currently learning Verilog and hardware programming.</p>
+                                <button class="btn-text flip-trigger" style="color: var(--accent); margin-top: auto;">Know More <i class="fas fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="card-back-bg">
+                                <img src="{{ url_for('static', filename='images/eyantra.png') }}" alt="Background">
+                            </div>
+                            <div class="card-back-content">
+                                <i class="fas fa-times close-card"></i>
+                                <h3>Maze Solver Bot</h3>
+                                 <p>Participating in IIT Bombay's <strong>e-Yantra</strong>. My task involves building an autonomous <strong>Maze Solver Bot</strong>.</p>
+                                 <p>The project challenges me to design complex pathfinding algorithms and implement them using hardware description languages like <strong>Verilog</strong>.</p>
+                                 <a href="https://github.com/anujrawal05/E-yantra2k25" target="_blank" class="btn btn-primary" style="background: #333; margin-top: 20px;">
+                                     <i class="fab fa-github"></i> View Progress
+                                 </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-pad">
+        <div class="container">
+            <h2 class="section-title" data-heading="CONNECT" style="color: var(--white);">Get in Touch</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Whether for semiconductor innovation, creative writing collaborations, or spiritual discussions.</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div><h5 style="color: rgba(255,255,255,0.7);">Email</h5><p>rawalanuj50@gmail.com</p></div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fab fa-whatsapp"></i>
+                         <div><h5 style="color: rgba(255,255,255,0.7);">WhatsApp</h5><p>+91 84508 95868</p></div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                         <div><h5 style="color: rgba(255,255,255,0.7);">Location</h5><p>Indore, Madhya Pradesh</p></div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 30px;">
+                         <a href="https://linkedin.com/in/anujrawal-ar" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="https://instagram.com/anujrawal.ar" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form action="{{ url_for('contact') }}" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="book-modal" class="book-modal desktop-only-modal">
+        <div class="modal-close" id="close-book-modal">&times;</div>
+        
+        <div class="modal-hint hint-left" id="hint-left">
+            <i class="fas fa-hand-pointer"></i> Click cover to flip
+        </div>
+        <div class="modal-hint hint-right" id="hint-right">
+            Scroll to open <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="modal-hint hint-bottom" id="hint-zoom">
+            <i class="fas fa-search-plus"></i> Click any page to Zoom In
+        </div>
+
+        <div class="book-stage">
+            <div class="realistic-book" id="realistic-book" data-state="0">
+                <div class="book-leaf leaf-cover">
+                    <div class="leaf-face front">
+                        <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Cover">
+                    </div>
+                    <div class="leaf-face back">
+                        <img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover">
+                    </div>
+                </div>
+                <div class="book-spread-view">
+                    <div class="spread-left-blank"></div>
+                    <div class="spread-right-content">
+                        <img src="{{ url_for('static', filename='images/page1.jpg') }}" class="book-page page-1 zoomable" alt="Page 1">
+                        <img src="{{ url_for('static', filename='images/page2.jpg') }}" class="book-page page-2 zoomable" alt="Page 2">
+                        <img src="{{ url_for('static', filename='images/page3.jpg') }}" class="book-page page-3 zoomable" alt="Page 3">
+                        <img src="{{ url_for('static', filename='images/page4.jpg') }}" class="book-page page-4 zoomable" alt="Page 4">
+                    </div>
+                </div>
+                <div class="final-back-cover zoomable">
+                     <img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover Final">
+                </div>
+            </div>
+        </div>
+
+        <div id="zoom-overlay" class="zoom-overlay">
+            <div class="zoom-close">&times;</div>
+            <img id="zoom-img" src="" alt="Zoomed Content">
+        </div>
+
+        <div class="buy-popup" id="buy-popup">
+            <div class="popup-content">
+                <h3>Fascinated by the preview?</h3>
+                <p>Unlock the complete journey of science and spirituality.</p>
+                <a href="#contact" class="btn btn-primary" onclick="document.getElementById('close-book-modal').click()">Buy Now</a>
+                <button class="btn-text" id="restart-book">Read Again</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="flip-overlay" id="flip-overlay"></div>
+
+</div> 
+
+<div id="mobile-book-modal" class="mobile-book-modal">
+    <div class="modal-header-mobile">
+        <span>Book Preview</span>
+        <div class="modal-close" id="close-mobile-book-modal">&times;</div>
+    </div>
+    <div class="mobile-book-scroll">
+        <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Front Cover">
+        <img src="{{ url_for('static', filename='images/page1.png') }}" alt="Page 1">
+        <img src="{{ url_for('static', filename='images/page2.png') }}" alt="Page 2">
+        <img src="{{ url_for('static', filename='images/page3.png') }}" alt="Page 3">
+        <img src="{{ url_for('static', filename='images/page4.png') }}" alt="Page 4">
+        <img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover">
+        <div class="mobile-buy-cta">
+            <h3>Enjoyed the preview?</h3>
+            <a href="#contact" class="btn btn-primary" style="width: 100%;" id="mobile-buy-btn">Contact Me to Buy</a>
+        </div>
+    </div>
+</div> 
+
+{% endblock %}
