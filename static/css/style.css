@@ -57,7 +57,6 @@ img { max-width: 100%; height: auto; display: block; }
 .section-title::before {
     content: attr(data-heading);
     position: absolute; top: -25px; left: 50%; transform: translateX(-50%);
-    /* INCREASED OPACITY TO 0.2 (20% BLACK) */
     font-size: 6rem; color: rgba(0, 0, 0, 0.2);
     white-space: nowrap; z-index: -1; font-weight: 800;
 }
@@ -338,7 +337,7 @@ body.dark-theme .book-showcase { background: linear-gradient(135deg, rgba(255, 2
     display: inline-block; margin-bottom: 15px;
 }
 
-/* --- 3D FLIP CARDS (IN-PLACE) --- */
+/* --- 3D FLIP CARDS (IN-PLACE & FIXED Z-INDEX) --- */
 
 .project-card-placeholder {
     position: relative;
@@ -346,9 +345,9 @@ body.dark-theme .book-showcase { background: linear-gradient(135deg, rgba(255, 2
     z-index: 1;
     perspective: 1500px;
 }
-/* Lift active placeholder above others to prevent clipping */
+/* CRITICAL FIX: This must be higher than the overlay (10500) */
 .project-card-placeholder.active {
-    z-index: 100; 
+    z-index: 10600 !important; 
 }
 
 .flippable-card {
@@ -396,15 +395,16 @@ body.dark-theme .book-showcase { background: linear-gradient(135deg, rgba(255, 2
 .card-front h3 { color: var(--white); margin-bottom: 10px; }
 .card-front p { color: rgba(255, 255, 255, 0.7); margin-bottom: 20px; }
 
-/* --- BACK FACE (With BG Image) --- */
+/* --- BACK FACE (With BG Image & Solid BG Color) --- */
 .card-back {
     transform: rotateY(180deg);
     z-index: 1;
-    background: var(--white); 
+    /* CRITICAL FIX: Ensure this is solid white so the black overlay doesn't show through */
+    background-color: var(--white) !important; 
     overflow: hidden;
 }
 body.dark-theme .card-back {
-    background: #0a0a16;
+    background-color: #0a0a16 !important;
 }
 
 /* Container for the 30% opacity image */
