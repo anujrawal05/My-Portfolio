@@ -2,36 +2,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isDesktop = window.innerWidth > 968;
 
+    // --- TYPEWRITER EFFECT (NOW WORKS ON ALL DEVICES) ---
+    const typedTextSpan = document.querySelector(".typed-text");
+    const cursorSpan = document.querySelector(".cursor");
+    const textArray = ["an Engineer.", "a Storyteller.", "a Spiritual Thinker.", "a Creative Innovator."];
+    const typingDelay = 100;
+    const erasingDelay = 50;
+    const newTextDelay = 2000; // Delay between current and next text
+    let textArrayIndex = 0;
+    let charIndex = 0;
+
+    function type() {
+        if (charIndex < textArray[textArrayIndex].length) {
+            if(cursorSpan) cursorSpan.classList.add("typing");
+            if(typedTextSpan) typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(type, typingDelay);
+        } else {
+            if(cursorSpan) cursorSpan.classList.remove("typing");
+            setTimeout(erase, newTextDelay);
+        }
+    }
+
+    function erase() {
+        if (charIndex > 0) {
+            if(cursorSpan) cursorSpan.classList.add("typing");
+            if(typedTextSpan) typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(erase, erasingDelay);
+        } else {
+            if(cursorSpan) cursorSpan.classList.remove("typing");
+            textArrayIndex++;
+            if(textArrayIndex >= textArray.length) textArrayIndex = 0;
+            setTimeout(type, typingDelay + 1100);
+        }
+    }
+
+    // Start the typing effect if the element exists
+    if (typedTextSpan) setTimeout(type, newTextDelay + 250);
+
+
+    // --- DESKTOP SPECIFIC LOGIC ---
     if (isDesktop) {
-        // ... [Keep typewriter logic same] ...
-        const typedTextSpan = document.querySelector(".typed-text");
-        const cursorSpan = document.querySelector(".cursor");
-        const textArray = ["an Engineer.", "a Storyteller.", "a Spiritual Thinker.", "a Creative Innovator."];
-        const typingDelay = 100, erasingDelay = 50, newTextDelay = 2000;
-        let textArrayIndex = 0, charIndex = 0;
-
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                if(cursorSpan) cursorSpan.classList.add("typing");
-                if(typedTextSpan) typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                charIndex++; setTimeout(type, typingDelay);
-            } else {
-                if(cursorSpan) cursorSpan.classList.remove("typing"); setTimeout(erase, newTextDelay);
-            }
-        }
-        function erase() {
-            if (charIndex > 0) {
-                if(cursorSpan) cursorSpan.classList.add("typing");
-                if(typedTextSpan) typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-                charIndex--; setTimeout(erase, erasingDelay);
-            } else {
-                if(cursorSpan) cursorSpan.classList.remove("typing");
-                textArrayIndex++; if(textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay + 1100);
-            }
-        }
-        if (typedTextSpan) setTimeout(type, newTextDelay + 250);
-
         setTimeout(() => {
             document.querySelectorAll('.flash-message').forEach(msg => {
                 msg.style.transition = "opacity 0.5s ease"; msg.style.opacity = '0';
@@ -39,26 +51,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, 5000);
 
-        // --- UPDATED 3-IMAGE SLIDER ---
+        // ... [KEEP REST OF DESKTOP LOGIC - P2Slider, Book Modal, etc.] ...
         const p2Slider = document.getElementById('project2-slider');
         if (p2Slider) {
-            // Get all 3 images from the data attributes
             const images = [
                 p2Slider.getAttribute('data-img1'),
                 p2Slider.getAttribute('data-img2'),
                 p2Slider.getAttribute('data-img3')
-            ].filter(url => url != null); // Safety check in case one is missing
+            ].filter(url => url != null);
 
             if (images.length > 1) {
                 let currentIndex = 0;
                 setInterval(() => {
                     currentIndex = (currentIndex + 1) % images.length;
                     p2Slider.src = images[currentIndex];
-                }, 1000); // 1000ms = 1 second interval
+                }, 1000);
             }
         }
 
-        // ... [Keep book modal logic same] ...
         const modal = document.getElementById('book-modal');
         const triggers = document.querySelectorAll('.book-trigger');
         const closeBtn = document.getElementById('close-book-modal');
@@ -172,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (restartBtn) restartBtn.addEventListener('click', resetBook);
 
     } else {
-        // --- MOBILE-ONLY JAVASCRIPT (Unchanged) ---
+        // --- MOBILE-ONLY JAVASCRIPT ---
         const mobileMenu = document.getElementById('mobile-menu');
         const navMenu = document.querySelector('.nav-menu');
         if (mobileMenu && navMenu) {
@@ -215,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 5000);
     }
 
-    // --- 3D FLIP CARD LOGIC (Unchanged) ---
+    // --- 3D FLIP CARD LOGIC (WORKS ON ALL DEVICES) ---
     const flipTriggers = document.querySelectorAll('.flip-trigger');
     const closeFlipBtns = document.querySelectorAll('.close-card');
     const flipOverlay = document.getElementById('flip-overlay');
