@@ -2,13 +2,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isDesktop = window.innerWidth > 968;
 
-    // --- TYPEWRITER EFFECT (NOW WORKS ON ALL DEVICES) ---
+    // --- TYPEWRITER EFFECT ---
     const typedTextSpan = document.querySelector(".typed-text");
     const cursorSpan = document.querySelector(".cursor");
     const textArray = ["an Engineer.", "a Storyteller.", "a Spiritual Thinker.", "a Creative Innovator."];
     const typingDelay = 100;
     const erasingDelay = 50;
-    const newTextDelay = 2000; // Delay between current and next text
+    const newTextDelay = 2000; 
     let textArrayIndex = 0;
     let charIndex = 0;
 
@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Start the typing effect if the element exists
     if (typedTextSpan) setTimeout(type, newTextDelay + 250);
 
 
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, 5000);
 
-        // ... [KEEP REST OF DESKTOP LOGIC - P2Slider, Book Modal, etc.] ...
         const p2Slider = document.getElementById('project2-slider');
         if (p2Slider) {
             const images = [
@@ -275,4 +273,64 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeActiveCard();
     });
+
+    // =========================================
+    //   VANKARI IMMERSIVE EXPERIENCE & SOUND
+    // =========================================
+    const vankariZone = document.getElementById('vankari-experience-zone');
+    const body = document.body;
+    
+    if (vankariZone) {
+        // Path check zarur kar lena apni audio file ka
+        const bassSound = new Audio('/static/audio/vankari-sound.mp3'); 
+        bassSound.volume = 0.8; 
+        let soundTimeout;
+
+        const options = {
+            root: null,
+            threshold: 0.6, 
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Dark theme activate
+                    body.classList.add('vankari-active');
+
+                    // Sound Play karna
+                    if (bassSound.paused) {
+                        bassSound.currentTime = 0;
+                        bassSound.play().catch(e => console.log("Browser blocked autoplay:", e));
+                        
+                        clearTimeout(soundTimeout);
+                        soundTimeout = setTimeout(() => {
+                            let vol = bassSound.volume;
+                            let fadeOut = setInterval(() => {
+                                if (vol > 0.05) {
+                                    vol -= 0.05;
+                                    bassSound.volume = vol;
+                                } else {
+                                    clearInterval(fadeOut);
+                                    bassSound.pause();
+                                    bassSound.volume = 0.8; 
+                                }
+                            }, 50);
+                        }, 2500); 
+                    }
+
+                } else {
+                    // Dark theme deactivate
+                    body.classList.remove('vankari-active');
+                    
+                    // Sound stop
+                    bassSound.pause();
+                    bassSound.currentTime = 0;
+                    clearTimeout(soundTimeout);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, options);
+        observer.observe(vankariZone);
+    }
 });

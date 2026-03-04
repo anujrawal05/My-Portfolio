@@ -31,7 +31,8 @@ body {
     line-height: 1.7;
     background-color: var(--white);
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Updated transition for smooth Vankari theme shifts */
+    transition: background-color 0.8s ease, background-image 0.8s ease, color 0.8s ease;
 }
 h1, h2, h3, h4, h5 {
     font-family: var(--font-heading);
@@ -549,6 +550,164 @@ body.dark-theme .footer { background: #0a0a16; border-top: 1px solid rgba(255, 2
 .flash-message.success { background: #28a745; color: white; }
 .flash-message.error { background: #e63946; color: white; }
 @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* =========================================
+   VANKARI EXPERIENCE MODE CAVE THEME
+========================================= */
+
+/* Jab ye class body par lagegi, toh puri site dark ho jayegi */
+body.vankari-active {
+    --text-dark: #f8f9fc;
+    background-image: url('/static/images/vankari-bg.png'); /* Absolute path to ensure it loads via Flask */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Scroll karne par image apni jagah rahegi */
+    position: relative;
+    background-color: #050505;
+}
+
+/* Ek dark overlay taaki text padhne mein aasaani ho */
+body.vankari-active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Books wale section ka white background transparent karna */
+body.vankari-active .section-pad,
+body.vankari-active .book-showcase {
+    background: transparent !important;
+    box-shadow: none;
+    border-color: transparent;
+}
+
+/* Text ko highlight karna */
+body.vankari-active .section-title,
+body.vankari-active #vankari-experience-zone .book-info h3,
+body.vankari-active #vankari-experience-zone .book-info p,
+body.vankari-active #vankari-experience-zone .book-info h5 {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+}
+
+/* Navbar ko Vankari mode mein dark karna */
+body.vankari-active .navbar {
+    background: rgba(5, 5, 5, 0.9) !important; /* Dark translucent background */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Navbar ke text aur logo ko white karna */
+body.vankari-active .navbar .logo,
+body.vankari-active .navbar .nav-link,
+body.vankari-active .navbar .menu-toggle {
+    color: #ffffff !important;
+}
+
+/* =========================================
+   HORROR ELEMENTS (SPIDER & SKULLS)
+========================================= */
+
+/* Main Container - Normally Hidden */
+.horror-elements {
+    position: fixed;
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    pointer-events: none; /* Taaki clicks block na hon */
+    z-index: 9998; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease; /* Smooth entry */
+}
+
+/* Vankari mode aate hi visible ho jayega */
+body.vankari-active .horror-elements {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- SPIDER ANIMATION --- */
+.spider-container {
+    position: absolute;
+    top: -200px; /* Screen ke bahar upar chhupa hua */
+    right: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.vankari-active .spider-container {
+    /* Spider achanak se niche girega aur phir jhulega */
+    animation: spiderDrop 1.5s forwards cubic-bezier(0.25, 1, 0.5, 1.2), 
+               spiderSwing 4s infinite alternate ease-in-out 1.5s;
+}
+
+/* Spider ka Jaala (Web) */
+.web-line {
+    width: 1.5px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Asli Spider Icon */
+.spider-container i {
+    font-size: 3.5rem;
+    color: #050505;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.8); /* Halki si laal chamak */
+    transform: translateY(-5px); 
+}
+
+/* --- SKULLS ANIMATION --- */
+.skull-1, .skull-2 {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.1); /* Bohot transparent */
+    filter: blur(2px); /* Dhundhla effect */
+    z-index: -1;
+}
+
+.skull-1 {
+    bottom: 5%;
+    left: 8%;
+    font-size: 8rem;
+}
+
+body.vankari-active .skull-1 {
+    animation: floatSkull 6s infinite alternate ease-in-out;
+}
+
+.skull-2 {
+    top: 15%;
+    right: 5%;
+    font-size: 12rem;
+    opacity: 0.05;
+}
+
+body.vankari-active .skull-2 {
+    animation: floatSkull 8s infinite alternate-reverse ease-in-out;
+}
+
+/* --- KEYFRAMES (The Magic) --- */
+@keyframes spiderDrop {
+    0% { top: -250px; }
+    100% { top: -20px; }
+}
+
+@keyframes spiderSwing {
+    0% { transform: rotate(-8deg); transform-origin: top center; }
+    100% { transform: rotate(8deg); transform-origin: top center; }
+}
+
+@keyframes floatSkull {
+    0% { transform: translateY(0) scale(1) rotate(-5deg); opacity: 0.05; }
+    100% { transform: translateY(-40px) scale(1.1) rotate(5deg); opacity: 0.15; }
+}
+
 
 /* =========================================
    MOBILE OVERRIDES (MAX-WIDTH: 968px)
