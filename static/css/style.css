@@ -637,31 +637,51 @@ body.dark-theme .footer { background: #0a0a16; border-top: 1px solid rgba(255, 2
 @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
 /* =========================================
-   VANKARI EXPERIENCE MODE CAVE THEME
+   VANKARI EXPERIENCE MODE CAVE THEME (SMOOTH FADE)
 ========================================= */
 
-/* Jab ye class body par lagegi, toh puri site dark ho jayegi */
+/* 1. Body ka base transition (Background color ke liye) */
 body.vankari-active {
     --text-dark: #f8f9fc;
-    background-image: url('/static/images/vankari-bg.png'); /* Absolute path to ensure it loads via Flask */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* Scroll karne par image apni jagah rahegi */
-    position: relative;
     background-color: #050505;
 }
 
-/* Ek dark overlay taaki text padhne mein aasaani ho */
-body.vankari-active::before {
+/* 2. Asli Cave Image - Jo ab Opacity ke through ekdum smoothly Fade In/Out hogi */
+body::after {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
-    z-index: -1;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('/static/images/vankari-bg.png'); 
+    background-size: cover;
+    background-position: center;
+    z-index: -2; /* Sabse piche rakhna hai */
     pointer-events: none;
+    opacity: 0; /* Normal mode mein hide rahega */
+    visibility: hidden;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out; /* 1.5s ka cinematic fade */
+}
+
+body.vankari-active::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 3. Dark Overlay - Ye bhi opacity se smoothly fade hoga taaki text padhne mein aaye */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.9) 100%);
+    z-index: -1; 
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+}
+
+body.vankari-active::before {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Books wale section ka white background transparent karna */
@@ -670,6 +690,7 @@ body.vankari-active .book-showcase {
     background: transparent !important;
     box-shadow: none;
     border-color: transparent;
+    transition: background 1.5s ease, box-shadow 1.5s ease, border-color 1.5s ease;
 }
 
 /* Text ko highlight karna */
@@ -679,13 +700,15 @@ body.vankari-active #vankari-experience-zone .book-info p,
 body.vankari-active #vankari-experience-zone .book-info h5 {
     color: #ffffff !important;
     text-shadow: 2px 2px 8px rgba(0,0,0,0.9);
+    transition: color 1.5s ease, text-shadow 1.5s ease;
 }
 
 /* Navbar ko Vankari mode mein dark karna */
 body.vankari-active .navbar {
-    background: rgba(5, 5, 5, 0.9) !important; /* Dark translucent background */
+    background: rgba(5, 5, 5, 0.9) !important; 
     border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: blur(10px);
+    transition: background 1.5s ease, border-color 1.5s ease;
 }
 
 /* Navbar ke text aur logo ko white karna */
@@ -693,8 +716,8 @@ body.vankari-active .navbar .logo,
 body.vankari-active .navbar .nav-link,
 body.vankari-active .navbar .menu-toggle {
     color: #ffffff !important;
+    transition: color 1.5s ease;
 }
-
 /* =========================================
    MOBILE OVERRIDES (MAX-WIDTH: 968px)
 ========================================= */
