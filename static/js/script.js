@@ -333,4 +333,45 @@ document.addEventListener('DOMContentLoaded', () => {
         const observer = new IntersectionObserver(observerCallback, options);
         observer.observe(vankariZone);
     }
+    // =========================================
+    //   SANATAN SERIES VIDEO MODAL LOGIC
+    // =========================================
+    const openSanatanBtn = document.getElementById('open-sanatan-modal');
+    const closeSanatanBtn = document.getElementById('close-sanatan-modal');
+    const sanatanModal = document.getElementById('sanatan-video-modal');
+    const sanatanIframe = document.getElementById('sanatan-yt-iframe');
+    const modalBackdrop = document.querySelector('.modal-backdrop');
+
+    if (openSanatanBtn && sanatanModal) {
+        // Modal open karna
+        openSanatanBtn.addEventListener('click', () => {
+            sanatanModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Pichle page ka scroll band karna
+        });
+
+        // Modal close karna function
+        const closeSanatanModal = () => {
+            sanatanModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Scroll wapas on karna
+            
+            // Video ko pause karne ki Ninja trick (iframe ka source refresh kar dena)
+            if (sanatanIframe) {
+                let currentSrc = sanatanIframe.src;
+                sanatanIframe.src = currentSrc; 
+            }
+        };
+
+        // Cross (X) par click karke band karna
+        closeSanatanBtn.addEventListener('click', closeSanatanModal);
+        
+        // Bahar dark area par click karke band karna
+        modalBackdrop.addEventListener('click', closeSanatanModal);
+
+        // Escape (Esc) button dabane par band karna
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && sanatanModal.classList.contains('active')) {
+                closeSanatanModal();
+            }
+        });
+    }
 });
