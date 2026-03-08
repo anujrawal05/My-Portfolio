@@ -1,5 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // =========================================
+    //   CINEMATIC WELCOME POP-UP (NO TIMER)
+    // =========================================
+    const welcomeModal = document.getElementById('welcome-ad-popup');
+    const closeWelcomeBtn = document.getElementById('close-welcome');
+
+    if (welcomeModal && !sessionStorage.getItem('vankariAdShown')) {
+        
+        // Appear 3 seconds after page load
+        setTimeout(() => {
+            welcomeModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+            const closeWelcomeAd = () => {
+                welcomeModal.classList.remove('active');
+                document.body.style.overflow = 'auto'; // Re-enable scrolling
+            };
+
+            // Close on 'X' click
+            if(closeWelcomeBtn) closeWelcomeBtn.addEventListener('click', closeWelcomeAd);
+            
+            // Close when clicking outside the pop-up
+            welcomeModal.addEventListener('click', (e) => {
+                if(e.target === welcomeModal) closeWelcomeAd();
+            });
+
+            // Prevent showing again during this session
+            sessionStorage.setItem('vankariAdShown', 'true');
+
+        }, 3000); 
+    }
+    
     const isDesktop = window.innerWidth > 968;
 
     // --- TYPEWRITER EFFECT ---

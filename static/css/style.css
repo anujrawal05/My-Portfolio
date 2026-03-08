@@ -1069,3 +1069,165 @@ body.dark-theme .sanatan-wrapper {
     border-color: rgba(255, 140, 66, 0.2);
     box-shadow: inset 0px 0px 100px rgba(255, 140, 66, 0.1);
 }
+
+/* =========================================
+   CINEMATIC WELCOME POP-UP (BLOOD & SHADOWS THEME)
+========================================= */
+.cinematic-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(2, 5, 8, 0.95); /* Extremely dark, cold background */
+    backdrop-filter: blur(12px);
+    z-index: 20000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cinematic-modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.cinematic-modal-content {
+    position: relative;
+    background: linear-gradient(145deg, rgba(15, 18, 22, 0.98), rgba(5, 5, 8, 0.98));
+    border: 1px solid rgba(150, 0, 0, 0.2); /* Deep blood red faint border */
+    box-shadow: 0 40px 100px rgba(0,0,0,0.95), inset 0 0 60px rgba(100, 0, 0, 0.1);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 800px;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cinematic-modal.active .cinematic-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.cinematic-close {
+    position: absolute;
+    top: 20px; right: 25px;
+    color: rgba(255,255,255,0.3);
+    font-size: 2.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+    line-height: 1;
+}
+
+.cinematic-close:hover {
+    color: #ff3333; /* Red hover */
+    transform: rotate(90deg) scale(1.1);
+}
+
+.cinematic-layout {
+    display: flex;
+    align-items: center;
+    padding: 50px;
+    gap: 50px;
+}
+
+/* Poster and BLOODY Glow Effect */
+.cinematic-poster-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    width: 250px;
+    border-radius: 8px;
+}
+
+.poster-glow {
+    position: absolute;
+    top: 5%; left: 5%; width: 90%; height: 90%;
+    background: #8b0000; /* Dark Blood Red */
+    filter: blur(50px);
+    opacity: 0.4;
+    z-index: 0;
+    animation: pulseBloodGlow 3s infinite alternate ease-in-out;
+}
+
+@keyframes pulseBloodGlow {
+    0% { opacity: 0.3; transform: scale(0.95); filter: blur(40px); }
+    100% { opacity: 0.6; transform: scale(1.1); filter: blur(60px); }
+}
+
+.cinematic-poster-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255,255,255,0.08); /* Slight silver edge like the sword */
+}
+
+/* Typography & Button */
+.cinematic-text { color: #ffffff; }
+
+.cinematic-badge {
+    display: inline-block;
+    color: #ff3333; /* Warning/Blood red text */
+    background: rgba(139, 0, 0, 0.15);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+.cinematic-text h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    color: #ffffff;
+    text-shadow: 0 5px 20px rgba(0,0,0,0.8);
+    font-family: 'Poppins', serif; /* Changed to give a slightly classic thriller look */
+    letter-spacing: -1px;
+}
+
+.tagline {
+    color: #a0a8b0; /* Cold steel grey */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 35px;
+}
+
+.btn-cinematic {
+    display: inline-block;
+    background: linear-gradient(135deg, #990000, #4d0000); /* Blood red gradient */
+    color: white !important;
+    padding: 16px 40px;
+    border-radius: 4px; /* Sharper edges for a thriller vibe */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.95rem;
+    box-shadow: 0 10px 30px rgba(100, 0, 0, 0.5);
+    transition: all 0.4s ease;
+    border: 1px solid #ff3333; /* Thin bright red border */
+}
+
+.btn-cinematic:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(150, 0, 0, 0.7);
+    background: linear-gradient(135deg, #b30000, #660000);
+}
+
+/* Mobile Adjustments for Cinematic Modal */
+@media (max-width: 768px) {
+    .cinematic-layout {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+        gap: 25px;
+    }
+    .cinematic-poster-wrapper { width: 180px; }
+    .cinematic-text h2 { font-size: 2.2rem; }
+}
