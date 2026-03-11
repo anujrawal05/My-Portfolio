@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeModal = document.getElementById('welcome-ad-popup');
     const closeWelcomeBtn = document.getElementById('close-welcome');
 
-    if (welcomeModal && !sessionStorage.getItem('vankariAdShown')) {
+    // NEW: Create a unique memory key for the specific page you are on
+    const currentPageKey = window.location.pathname.includes('books') ? 'adShown_books' : 'adShown_home';
+
+    if (welcomeModal && !sessionStorage.getItem(currentPageKey)) {
         setTimeout(() => {
             welcomeModal.classList.add('active');
             document.body.style.overflow = 'hidden'; 
@@ -23,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if(e.target === welcomeModal) closeWelcomeAd();
             });
 
-            sessionStorage.setItem('vankariAdShown', 'true');
+            // Save the memory for this specific page
+            sessionStorage.setItem(currentPageKey, 'true');
         }, 3000); 
     }
 

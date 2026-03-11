@@ -17,6 +17,21 @@ if not os.path.exists(CONTACT_FILE):
         writer.writerow(['Timestamp', 'Name', 'Email', 'Subject', 'Message'])
 
 # --- ROUTES ---
+@app.route('/sanatan-the-eternal-way')
+def book_eternal_way():
+    return render_template('book_eternal_way.html')
+
+@app.route('/sanatan-birth-till-death')
+def book_birth_death():
+    return render_template('book_birth_death.html')
+
+@app.route('/sanatan-hindi-edition')
+def book_hindi_edition():
+    return render_template('book_hindi_edition.html')
+
+@app.route('/the-vankari-debt')
+def book_vankari():
+    return render_template('book_vankari.html')
 
 @app.route('/')
 def home():

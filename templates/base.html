@@ -88,5 +88,42 @@
     </footer>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Audio elements available globally on all pages -->
+<audio id="sanatan-global-audio" src="{{ url_for('static', filename='audio/sanatan-sound.mp3') }}" preload="auto"></audio>
+<audio id="vankari-global-audio" src="{{ url_for('static', filename='audio/vankari-sound.mp3') }}" preload="auto"></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Check if the previous page left a "pending" sound request
+    const pendingSound = localStorage.getItem('pending_audio_type');
+    
+    if (pendingSound) {
+        const audio = document.getElementById(pendingSound + '-global-audio');
+        if (audio) {
+            // 2. Attempt to play as soon as the page loads
+            audio.play()
+            .then(() => {
+                // Clear the memory so it doesn't play again on refresh
+                localStorage.removeItem('pending_audio_type');
+            })
+            .catch(error => {
+                console.log("Autoplay blocked. Sound will play on first user interaction.");
+                
+                // 3. Browser fallback: If blocked, play on the very first click/touch
+                const playOnInteraction = () => {
+                    audio.play();
+                    localStorage.removeItem('pending_audio_type');
+                    document.removeEventListener('click', playOnInteraction);
+                    document.removeEventListener('touchstart', playOnInteraction);
+                };
+                document.addEventListener('click', playOnInteraction);
+                document.addEventListener('touchstart', playOnInteraction);
+            });
+        }
+    }
+});
+</script>
+
 </body>
 </html>

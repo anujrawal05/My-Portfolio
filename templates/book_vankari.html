@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+
+{% block title %}The Vankari Debt: Volume 1 | Anuj Rawal{% endblock %}
+
+{% block navbar %}
+<!-- Special Dark Navbar for Thriller -->
+<nav class="navbar" style="background: #050000; border-bottom: 1px solid rgba(255, 0, 0, 0.2); padding: 15px 0;">
+    <div class="container" style="display: flex; justify-content: center; align-items: center;">
+        <a href="{{ url_for('books') }}" style="font-family: 'Poppins', serif; display: flex; align-items: center; gap: 8px; text-decoration: none;">
+            <i class="fas fa-feather-alt" style="color: #ff3333; font-size: 1.5rem; transform: rotate(-15deg);"></i>
+            <span style="color: #fff; font-size: 1.4rem; font-weight: 600;">A.R.</span> 
+            <span style="color: #ff3333; font-weight: 400; font-size: 1.4rem;">Publications</span>
+        </a>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<style>
+    .vankari-product-page {
+        background: radial-gradient(circle at top, #1a0505 0%, #050000 100%);
+        color: #fff;
+        min-height: 100vh;
+        font-family: 'Poppins', sans-serif;
+        padding-bottom: 60px;
+    }
+    
+    .product-top-nav { padding: 20px; }
+    .product-top-nav a {
+        color: #ff3333;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 0, 0, 0.05);
+        border: 1px solid rgba(255, 0, 0, 0.2);
+        padding: 8px 16px;
+        border-radius: 20px;
+    }
+
+    .product-hero {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+    }
+    .product-cover {
+        width: 240px;
+        border-radius: 8px;
+        box-shadow: 0 0 50px rgba(255, 0, 0, 0.2), 0 20px 40px rgba(0,0,0,0.9);
+        border: 1px solid rgba(255, 51, 51, 0.3);
+    }
+
+    .product-info { padding: 20px; text-align: center; }
+    .product-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #fff;
+        text-shadow: 0 0 15px rgba(255, 51, 51, 0.5);
+        margin-bottom: 5px;
+    }
+    .product-subtitle { color: #ff3333; font-size: 0.9rem; font-weight: 600; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+
+    .product-actions { display: flex; flex-direction: column; gap: 15px; padding: 0 20px 25px; }
+    .btn-buy-vankari {
+        background: linear-gradient(45deg, #800000, #ff0000);
+        color: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        font-weight: 800;
+        text-transform: uppercase;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        text-decoration: none;
+    }
+
+    .warning-box {
+        background: rgba(255, 0, 0, 0.1);
+        border: 1px solid #ff3333;
+        padding: 15px;
+        margin: 0 20px 25px;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        color: #ffcccc;
+    }
+
+    .quick-facts-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        margin-bottom: 25px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .fact-item { text-align: center; flex: 1; }
+    .fact-item i { font-size: 1.5rem; color: #ff3333; margin-bottom: 8px; }
+    .fact-value { display: block; font-size: 0.85rem; font-weight: 600; }
+
+    .description-section { padding: 0 20px; }
+    .description-section h3 { color: #fff; margin-bottom: 15px; font-size: 1.3rem; border-left: 4px solid #ff3333; padding-left: 10px; }
+    .description-content { color: #ccc; font-size: 0.95rem; line-height: 1.8; }
+    
+    .feature-list { list-style: none; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; margin: 15px 0; }
+    .feature-list li { margin-bottom: 8px; color: #ffcccc; display: flex; gap: 10px; }
+    .feature-list li::before { content: '†'; color: #ff3333; font-weight: bold; }
+
+    .details-box { background: #0a0a0a; padding: 20px; margin: 25px 20px; border-radius: 8px; border: 1px solid #1a1a1a; }
+    .details-box ul { list-style: none; padding: 0; }
+    .details-box li { font-size: 0.9rem; color: #888; margin-bottom: 10px; display: flex; justify-content: space-between; }
+    .details-box li strong { color: #eee; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+
+<div class="vankari-product-page">
+    <div class="product-top-nav">
+        <a href="{{ url_for('books') }}"><i class="fas fa-chevron-left"></i> The Universe</a>
+    </div>
+
+    <div class="product-hero">
+        <!-- Replace with your actual vankari poster image -->
+        <img src="{{ url_for('static', filename='images/vankari.jpg') }}" alt="The Vankari Debt" class="product-cover">
+    </div>
+
+    <div class="product-info">
+        <h1 class="product-title">The Vankari Debt</h1>
+        <div class="product-subtitle">Volume 1: The Beginning</div>
+        <p style="color: #888;">by Anuj Rawal</p>
+    </div>
+
+    <div class="product-actions">
+        <a href="https://play.google.com/store/books/details/Anuj_Rawal_The_Vankari_Debt?id=gSnFEQAAQBAJ" target="_blank" class="btn-buy-vankari" style="background: linear-gradient(45deg, #1a73e8, #4285f4); box-shadow: 0 10px 30px rgba(66, 133, 244, 0.3);">
+            <i class="fab fa-google-play"></i> Get on Play Books
+        </a>
+    </div>
+
+    <div class="warning-box">
+        <strong>⚠️ CONTENT WARNING:</strong> This book contains mature themes, graphic violence, psychological trauma, and explicit content. Reader discretion is advised.
+    </div>
+
+    <div class="quick-facts-row">
+        <div class="fact-item">
+            <i class="fas fa-scroll"></i>
+            <span class="fact-value">108 Pages</span>
+        </div>
+        <div class="fact-item">
+            <i class="fas fa-skull-crossbones"></i>
+            <span class="fact-value">Dark Thriller</span>
+        </div>
+        <div class="fact-item">
+            <i class="fas fa-language"></i>
+            <span class="fact-value">English</span>
+        </div>
+    </div>
+
+    <div class="description-section">
+        <h3>The Beginning</h3>
+        <div class="description-content">
+            <p><strong>Power protects the guilty. Until someone decides to collect.</strong></p>
+            <p>In the heart of modern India, Joy Khanna lives untouchable—shielded by his father’s money. But one reckless night changes everything.</p>
+            
+            <div id="vankari-more" style="display: none; animation: fadeIn 0.5s;">
+                <p>A chance encounter triggers a brutal chain reaction, forcing three souls into a violent escape guided by strangers in shadows and hunted by a man who believes justice must be paid in blood.</p>
+                
+                <p style="color: #ff3333; font-weight: 600; margin-top: 15px;">If you enjoy:</p>
+                <ul class="feature-list">
+                    <li>Dark crime and psychological thrillers</li>
+                    <li>Morally grey characters</li>
+                    <li>High-stakes survival narratives</li>
+                    <li>Slow-burn tension with shocking revelations</li>
+                </ul>
+                
+                <p>Beneath the chase lies an ancient, buried debt—one tied to forgotten rituals and a name that was never meant to resurface. The debt has been awakened. This is only the beginning.</p>
+            </div>
+
+            <button onclick="toggleVankari()" id="vankari-btn" style="background:none; border:none; color:#ff3333; font-weight:700; padding:0; margin-top:10px; cursor:pointer;">
+                READ FULL SYNOPSIS ▼
+            </button>
+        </div>
+    </div>
+
+    <div class="details-box">
+        <ul>
+            <li><strong>Publisher</strong> <span>A.R. Publications</span></li>
+            <li><strong>Publication Date</strong> <span>26 January 2026</span></li>
+            <li><strong>ISBN-13</strong> <span>978-8199708792</span></li>
+            <li><strong>Reading Age</strong> <span>18+ Years</span></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+function toggleVankari() {
+    var moreText = document.getElementById("vankari-more");
+    var btnText = document.getElementById("vankari-btn");
+
+    if (moreText.style.display === "none") {
+        moreText.style.display = "block";
+        btnText.innerHTML = "READ LESS ▲";
+    } else {
+        moreText.style.display = "none";
+        btnText.innerHTML = "READ FULL SYNOPSIS ▼";
+    }
+}
+</script>
+{% endblock %}
