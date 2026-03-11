@@ -725,9 +725,15 @@ body.vankari-active .navbar .menu-toggle {
     .desktop-view { display: block !important; }
     .mobile-linkedin-view { display: none !important; }
     .desktop-only-modal { display: none !important; }
+    
     body { background-color: var(--white); }
+    
+    /* NEW: CRITICAL FIX FOR VANKARI MOBILE THEME */
+    body.vankari-active { background-color: #050505 !important; }
+    
     :root { --primary: #2E5BFF; }
-
+    
+    /* ... rest of your mobile CSS ... */
     .section-pad { padding: 80px 0; }
     .section-title { font-size: 2.2rem; margin-bottom: 40px; }
     .section-title::before { font-size: 4rem; top: -15px; }

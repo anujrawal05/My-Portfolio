@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isDesktop = window.innerWidth > 968;
 
     // =========================================
-    //   1. CINEMATIC WELCOME POP-UP (NO TIMER)
+    //   1. CINEMATIC WELCOME POP-UP
     // =========================================
     const welcomeModal = document.getElementById('welcome-ad-popup');
     const closeWelcomeBtn = document.getElementById('close-welcome');
@@ -75,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================
     const mobileMenu = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
+    
     if (mobileMenu && navMenu) {
         mobileMenu.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
@@ -87,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================
-    //   4. 3D BOOK FLIP MODAL (DESKTOP & MOBILE)
+    //   4. 3D BOOK FLIP MODAL (DESKTOP)
     // =========================================
     const modal = document.getElementById('book-modal');
     const triggers = document.querySelectorAll('.book-trigger');
@@ -109,18 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (modal && isDesktop) {
         function openBookModal() {
-            modal.classList.add('active'); document.body.style.overflow = 'hidden'; resetBook();
+            modal.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+            resetBook();
         }
+        
         triggers.forEach(trigger => trigger.addEventListener('click', openBookModal));
 
         function closeBookModal() {
-            modal.classList.remove('active'); document.body.style.overflow = 'auto'; setTimeout(resetBook, 500);
+            modal.classList.remove('active'); 
+            document.body.style.overflow = 'auto'; 
+            setTimeout(resetBook, 500);
         }
+        
         if (closeBtn) closeBtn.addEventListener('click', closeBookModal);
 
         if (book) {
             const cover = book.querySelector('.leaf-cover');
-            if (cover) cover.addEventListener('click', () => { if (currentState === 0) book.classList.toggle('flip-cover'); });
+            if (cover) cover.addEventListener('click', () => { 
+                if (currentState === 0) book.classList.toggle('flip-cover'); 
+            });
         }
 
         zoomables.forEach(el => {
@@ -135,7 +144,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         if (zoomClose) zoomClose.addEventListener('click', () => zoomOverlay.classList.remove('active'));
-        if (zoomOverlay) zoomOverlay.addEventListener('click', (e) => { if (e.target === zoomOverlay) zoomOverlay.classList.remove('active'); });
+        if (zoomOverlay) zoomOverlay.addEventListener('click', (e) => { 
+            if (e.target === zoomOverlay) zoomOverlay.classList.remove('active'); 
+        });
 
         window.addEventListener('wheel', (e) => {
             if (!modal.classList.contains('active') || (zoomOverlay && zoomOverlay.classList.contains('active'))) return;
@@ -154,7 +165,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isAnimating) return;
             const nextState = currentState + direction;
             if (nextState >= 0 && nextState <= 6) {
-                currentState = nextState; updateBookState(); isAnimating = true;
+                currentState = nextState; 
+                updateBookState(); 
+                isAnimating = true;
                 setTimeout(() => isAnimating = false, 1000);
             }
         }
@@ -198,7 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (restartBtn) restartBtn.addEventListener('click', resetBook);
     }
 
-    // Mobile Book Modal Logic
+    // =========================================
+    //   5. MOBILE BOOK MODAL
+    // =========================================
     const mobileBookModal = document.getElementById('mobile-book-modal');
     const mobileBookClose = document.getElementById('close-mobile-book-modal');
     const mobileBuyBtn = document.getElementById('mobile-buy-btn');
@@ -220,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================
-    //   5. 3D FLIP CARDS (PROJECTS)
+    //   6. 3D FLIP CARDS (PROJECTS)
     // =========================================
     const flipTriggers = document.querySelectorAll('.flip-trigger');
     const closeFlipBtns = document.querySelectorAll('.close-card');
@@ -264,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // =========================================
-    //   6. SANATAN SERIES VIDEO MODAL
+    //   7. SANATAN SERIES VIDEO MODAL
     // =========================================
     const openSanatanBtn = document.getElementById('open-sanatan-modal');
     const closeSanatanBtn = document.getElementById('close-sanatan-modal');
@@ -282,19 +297,18 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.style.overflow = 'auto'; 
             if (sanatanIframe) {
                 let currentSrc = sanatanIframe.src;
-                sanatanIframe.src = currentSrc; // Pauses YouTube video
+                sanatanIframe.src = currentSrc; // Pauses YouTube video by resetting iframe
             }
         };
 
         if(closeSanatanBtn) closeSanatanBtn.addEventListener('click', closeSanatanModal);
         
-        // Modal Backdrop Click
         const sBackdrop = sanatanModal.querySelector('.modal-backdrop');
         if(sBackdrop) sBackdrop.addEventListener('click', closeSanatanModal);
     }
 
     // =========================================
-    //   7. VANKARI SERIES VIDEO MODAL (LOCAL MP4)
+    //   8. VANKARI SERIES VIDEO MODAL (LOCAL MP4)
     // =========================================
     const openVankariBtn = document.getElementById('open-vankari-modal');
     const closeVankariBtn = document.getElementById('close-vankari-modal');
@@ -306,7 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
         openVankariBtn.addEventListener('click', () => {
             vankariModal.classList.add('active');
             document.body.style.overflow = 'hidden'; 
-            // Video auto-play on open
+            
+            // Auto-play video on open
             if(vankariVideoPlayer) {
                 vankariVideoPlayer.currentTime = 0;
                 vankariVideoPlayer.play().catch(e => console.log("Autoplay prevented:", e));
@@ -316,7 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const closeVankariModal = () => {
             vankariModal.classList.remove('active');
             document.body.style.overflow = 'auto'; 
-            // Video Pause on close
+            
+            // Pause video on close
             if (vankariVideoPlayer) {
                 vankariVideoPlayer.pause(); 
             }
@@ -326,7 +342,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if(vankariBackdrop) vankariBackdrop.addEventListener('click', closeVankariModal);
     }
 
-    // Global Escape Key for Modals
+    // =========================================
+    //   9. GLOBAL ESCAPE KEY LISTENER
+    // =========================================
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (sanatanModal && sanatanModal.classList.contains('active')) {
@@ -344,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================
-    //   8. VANKARI CAVE BACKGROUND SCROLL EFFECT
+    //   10. VANKARI CAVE BACKGROUND SCROLL EFFECT
     // =========================================
     const vankariZone = document.getElementById('vankari-experience-zone');
     const body = document.body;
@@ -354,9 +372,10 @@ document.addEventListener('DOMContentLoaded', () => {
         bassSound.volume = 0.8; 
         let soundTimeout;
 
+        // SAFE FIX: 15% threshold for ALL devices ensures it never breaks, even on tall sections
         const options = {
             root: null,
-            threshold: 0.6, 
+            threshold: 0.15, 
         };
 
         const observerCallback = (entries) => {
@@ -366,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (bassSound.paused) {
                         bassSound.currentTime = 0;
-                        bassSound.play().catch(e => console.log("Sound autoplay blocked"));
+                        bassSound.play().catch(e => console.log("Sound autoplay blocked by browser policy"));
                         
                         clearTimeout(soundTimeout);
                         soundTimeout = setTimeout(() => {
