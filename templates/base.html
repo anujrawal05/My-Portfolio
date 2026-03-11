@@ -17,13 +17,15 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
+    <!-- =========================================
+         DEFAULT NAVBAR (FOR TECH PORTFOLIO)
+    ========================================= -->
+    {% block navbar %}
     <nav class="navbar">
         <div class="container nav-container">
             <a href="{{ url_for('home') }}" class="logo">Portfolio<span>.</span></a>
@@ -35,12 +37,13 @@
             <ul class="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#resume" class="nav-link">Journey</a></li>
-                <li><a href="#books" class="nav-link">My Book</a></li>
+                <li><a href="{{ url_for('books') }}" class="nav-link">My Books</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link btn-nav">Contact</a></li>
             </ul>
         </div>
     </nav>
+    {% endblock %}
 
     <div class="flash-container">
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -65,9 +68,9 @@
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#books">My Writings</a></li>
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('home') }}#about">About Me</a></li>
+                    <li><a href="{{ url_for('books') }}">My Writings</a></li>
                 </ul>
             </div>
             <div class="footer-social">

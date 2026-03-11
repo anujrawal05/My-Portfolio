@@ -1231,3 +1231,163 @@ body.dark-theme .sanatan-wrapper {
     .cinematic-poster-wrapper { width: 180px; }
     .cinematic-text h2 { font-size: 2.2rem; }
 }
+
+/* =========================================
+   ABOUT THE AUTHOR SECTION (BOOKS.HTML)
+========================================= */
+.author-profile-showcase {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    background: var(--white);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    border: 1px solid rgba(255, 140, 66, 0.15);
+    position: relative;
+    z-index: 10;
+}
+
+body.dark-theme .author-profile-showcase {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.2));
+}
+
+.author-photo-container {
+    flex: 0 0 350px; /* Adjust width as needed */
+    position: relative;
+}
+
+/* STATIC PHOTO - NO ANIMATION */
+.author-static-photo {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    position: relative;
+    z-index: 2;
+    border: 4px solid var(--white);
+    animation: none !important; /* Removes floating effect */
+}
+
+/* Creative Dashed Frame behind photo */
+.photo-backdrop {
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,140,66,0.1) 0%, rgba(255,140,66,0) 70%);
+    border: 2px dashed var(--accent);
+    border-radius: 20px;
+    z-index: 1;
+}
+
+.author-bio-content {
+    flex: 1;
+}
+
+.author-badge {
+    display: inline-block;
+    background: rgba(46, 91, 255, 0.1);
+    color: var(--primary);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 20px;
+}
+
+.author-heading {
+    font-size: 2.8rem;
+    color: var(--dark);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.bio-text p {
+    font-size: 1.15rem;
+    color: var(--text-dark);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.author-quote {
+    margin-top: 30px;
+    padding: 20px 30px;
+    border-left: 5px solid var(--accent);
+    background: rgba(255, 140, 66, 0.05);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--dark);
+    border-radius: 0 15px 15px 0;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 968px) {
+    .author-profile-showcase {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    .author-photo-container {
+        width: 250px;
+        flex: 0 0 auto;
+        margin: 0 auto 30px;
+    }
+    .photo-backdrop {
+        left: 10px;
+        top: 10px;
+    }
+    .author-heading {
+        font-size: 2.2rem;
+    }
+    .author-quote {
+        text-align: left;
+        font-size: 1.1rem;
+    }
+}
+
+// =========================================
+    //   VANKARI SERIES VIDEO MODAL LOGIC (LOCAL MP4)
+    // =========================================
+    const openVankariBtn = document.getElementById('open-vankari-modal');
+    const closeVankariBtn = document.getElementById('close-vankari-modal');
+    const vankariModal = document.getElementById('vankari-video-modal');
+    const vankariVideoPlayer = document.getElementById('vankari-video-player');
+    const vankariBackdrop = document.getElementById('vankari-backdrop');
+
+    if (openVankariBtn && vankariModal) {
+        
+        // Modal open karna
+        openVankariBtn.addEventListener('click', () => {
+            vankariModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
+            // Optional: Agar aap chahte hain open hote hi video play ho jaye
+            // if(vankariVideoPlayer) vankariVideoPlayer.play(); 
+        });
+
+        // Modal close karna function
+        const closeVankariModal = () => {
+            vankariModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; 
+            
+            // LOCAL VIDEO PAUSE KARNA (Very Important, varna piche awaaz aati rahegi)
+            if (vankariVideoPlayer) {
+                vankariVideoPlayer.pause(); 
+            }
+        };
+
+        // Cross (X) par click karke band karna
+        if(closeVankariBtn) closeVankariBtn.addEventListener('click', closeVankariModal);
+        
+        // Bahar dark area par click karke band karna
+        if(vankariBackdrop) vankariBackdrop.addEventListener('click', closeVankariModal);
+
+        // Escape (Esc) button dabane par band karna
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && vankariModal.classList.contains('active')) {
+                closeVankariModal();
+            }
+        });
+    }

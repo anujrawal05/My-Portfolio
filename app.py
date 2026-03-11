@@ -23,6 +23,12 @@ def home():
     """Renders the main homepage."""
     return render_template('index.html')
 
+# NEW ROUTE ADDED FOR YOUR AUTHOR UNIVERSE PAGE
+@app.route('/books')
+def books():
+    """Renders the dedicated Author Universe page."""
+    return render_template('books.html')
+
 @app.route('/contact', methods=['POST'])
 def contact():
     try:

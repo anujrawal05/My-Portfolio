@@ -1,0 +1,349 @@
+{% extends 'base.html' %}
+
+{% block title %}Anuj Rawal | The Author Universe{% endblock %}
+
+<!-- =========================================
+     CUSTOM NAVBAR FOR AUTHOR UNIVERSE
+========================================= -->
+{% block navbar %}
+<nav class="navbar">
+    <div class="container nav-container">
+        
+        <!-- CREATIVE LOGO: A.R. Publications -->
+        <a href="{{ url_for('books') }}" class="logo" style="font-family: 'Poppins', serif; display: flex; align-items: center; gap: 8px;">
+            <i class="fas fa-feather-alt" style="color: var(--accent); font-size: 1.5rem; transform: rotate(-15deg);"></i>
+            A.R. <span style="color: var(--accent); font-weight: 400; font-size: 1.4rem;">Publications</span>
+        </a>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        
+        <!-- CUSTOM LINKS FOR THIS PAGE -->
+        <ul class="nav-menu">
+            <li><a href="#about-author" class="nav-link">The Author</a></li>
+            <li><a href="#books-universe" class="nav-link">Universe</a></li>
+            <li><a href="{{ url_for('home') }}" class="nav-link" style="color: var(--primary);">Tech Portfolio</a></li>
+            <li><a href="{{ url_for('home') }}#contact" class="nav-link btn-nav" style="background: var(--dark);">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+<div class="desktop-view">
+
+    <!-- =========================================
+         AUTHOR HERO SECTION
+    ========================================= -->
+    <section class="hero" style="min-height: 60vh; padding: 150px 0 80px; background: linear-gradient(135deg, rgba(10, 10, 28, 0.95), rgba(255, 140, 66, 0.8)), url('{{ url_for('static', filename='images/philosophy-bg.png') }}') no-repeat center center/cover;">
+        <div class="container" style="text-align: center; color: white;">
+            <span class="spiritual-tag" style="margin-bottom: 20px;">The Literary Universe</span>
+            <h1 style="font-size: 4rem; margin-bottom: 20px;">Anuj Rawal</h1>
+            <p style="font-size: 1.3rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">
+                "Exploring the hidden realms of ancient wisdom, quantum reality, and dark tribal mysteries through the power of storytelling."
+            </p>
+        </div>
+    </section>
+
+    <!-- =========================================
+         ABOUT THE AUTHOR (STATIC PHOTO)
+    ========================================= -->
+    <section id="about-author" class="section-pad bg-light">
+        <div class="container">
+            <div class="author-profile-showcase">
+                
+                <div class="author-photo-container">
+                    <img src="{{ url_for('static', filename='images/author.jpg') }}" alt="Anuj Rawal - Author" class="author-static-photo">
+                    <div class="photo-backdrop"></div> 
+                </div>
+
+                <div class="author-bio-content">
+                    <span class="author-badge"><i class="fas fa-pen-nib"></i> The Creator</span>
+                    <h2 class="author-heading">The Mind Behind the Words</h2>
+                    
+                    <div class="bio-text">
+                        <p>I am a storyteller who refuses to be confined by genres. My journey began with a deep, consuming curiosity about the roots of our existence, leading to the creation of the <strong>Sanatan Series</strong>—an analytical bridge between Vedic wisdom and modern science.</p>
+                        
+                        <p>However, the mind is a landscape of both light and shadow. To explore the darker, untested territories of history and human nature, I ventured into the thriller genre with <strong>The Vankari Debt</strong>.</p>
+                        
+                        <blockquote class="author-quote">
+                            "Whether decoding the cosmos or unraveling deadly cave mysteries, my goal remains the same: to make you question everything you thought you knew."
+                        </blockquote>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         THE BOOK UNIVERSE
+    ========================================= -->
+    <section id="books-universe" class="section-pad">
+        <div class="container">
+            
+            <!-- SANATAN SERIES -->
+            <div class="book-series-wrapper sanatan-wrapper" data-aos="fade-up">
+                <div class="series-header minimal-header">
+                    <span class="series-badge">The Complete Universe</span>
+                    <h2>The Sanatan Series</h2>
+                    
+                    <div class="about-series-row">
+                        <h4 class="minimal-about-title">About the Series</h4>
+                        <button class="btn-watch-series" id="open-sanatan-modal">
+                            <i class="fas fa-play"></i> Watch
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="series-book-list">
+                    <div class="book-showcase">
+                        <div class="book-wrapper book-trigger">
+                            <div class="click-hint">
+                                <span>Click to Open Book!</span>
+                                <i class="fas fa-arrow-down bounce"></i>
+                            </div>
+                            <div class="book-3d-trigger">
+                                <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Sanatan Book Cover">
+                            </div>
+                        </div>
+                        
+                        <div class="book-info">
+                            <span class="book-tag">DEBUT BOOK (2025)</span>
+                            <h3>Sanatan: The Eternal Way of Living</h3>
+                            <p>A thought-provoking exploration that bridges the wisdom of ancient Sanatan Dharma with the clarity of modern science.</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);">
+                                <div><h5>Publisher</h5><p style="font-weight: 700; margin-bottom: 0;">Integrity Education</p></div>
+                                <div><h5>Availability</h5><p style="font-weight: 700; margin-bottom: 0;">Amazon & Flipkart</p></div>
+                            </div>
+                            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                <button class="btn btn-outline book-trigger" style="border-color: var(--primary); color: var(--primary);">Read Preview</button>
+                                <a href="https://amzn.in/d/0fvoH0jz" target="_blank" class="btn btn-primary">Buy on Amazon</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-showcase">
+                        <div class="book-wrapper">
+                            <div class="book-3d-trigger" style="cursor: default;">
+                                <img src="{{ url_for('static', filename='images/english_cover_S2.png') }}" alt="Sanatan: A Journey from Birth till Death Cover">
+                            </div>
+                        </div>
+                        
+                        <div class="book-info">
+                            <span class="book-tag" style="background: var(--primary); color: var(--white); border: none;">NEW RELEASE</span>
+                            <h3>Sanatan: A Journey From Birth Till Death</h3>
+                            <p>An immersive guide that takes the reader through the profound journey of life, exploring deeper spiritual milestones from birth to the final transition.</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);">
+                                <div><h5>Publisher</h5><p style="font-weight: 700; margin-bottom: 0;">A.R. Publications</p></div>
+                                <div><h5>Formats</h5><p style="font-weight: 700; margin-bottom: 0;">Paperback & eBook</p></div>
+                            </div>
+                            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                                <a href="https://store.pothi.com/book/anuj-rawal-sanatan-journey-birth-till-death/" target="_blank" class="btn btn-primary">Paperback (Pothi)</a>
+                                <a href="https://amzn.in/d/02NGy4Cv" target="_blank" class="btn btn-outline" style="border-color: var(--primary); color: var(--primary);">eBook (Amazon)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="book-showcase">
+                        <div class="book-wrapper">
+                            <div class="book-3d-trigger" style="cursor: default;">
+                                <img src="{{ url_for('static', filename='images/hindi_cover_S2.jpg') }}" alt="Sanatan: Janm Se Moksh Tak Ki Yatra Cover">
+                            </div>
+                        </div>
+                        
+                        <div class="book-info">
+                            <span class="book-tag" style="background: #e63946; color: var(--white); border: none;">HINDI EDITION</span>
+                            <h3>सनातन: जन्म से मोक्ष तक की यात्रा</h3>
+                            <p>जीवन की गहन यात्रा का एक विहंगम मार्गदर्शक, जो सनातन धर्म के शाश्वत ज्ञान में निहित, जन्म से लेकर अंतिम मोक्ष तक के आध्यात्मिक पड़ावों की खोज करता है।</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);">
+                                <div><h5>Publisher</h5><p style="font-weight: 700; margin-bottom: 0;">A.R. Publications</p></div>
+                                <div><h5>Availability</h5><p style="font-weight: 700; margin-bottom: 0;">Amazon</p></div>
+                            </div>
+                            <a href="https://amzn.in/d/0fssgrpX" target="_blank" class="btn btn-primary">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+
+            <!-- VANKARI DEBT -->
+            <div class="book-series-wrapper vankari-wrapper" data-aos="fade-up" id="vankari-experience-zone">
+                <div class="series-header">
+                    <span class="series-badge vankari-badge" style="background: var(--dark); color: var(--white); border: none;">Latest Thriller Universe</span>
+                    <h2 class="vankari-heading">The Vankari Debt</h2>
+                    <p class="vankari-subheading">A dark thriller series where history, mystery, and deadly tribal secrets collide deep within the ancient caves.</p>
+                    
+                    <!-- NEW: VANKARI TRAILER BUTTON -->
+                    <div class="about-series-row">
+                        <h4 class="minimal-about-title" style="color: #fff;">About the Series</h4>
+                        <button class="btn-watch-series vankari-watch-btn" id="open-vankari-modal">
+                            <i class="fas fa-play"></i> Watch Trailer
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="series-book-list">
+                    <div class="book-showcase">
+                        <div class="book-wrapper">
+                            <div class="book-3d-trigger" style="cursor: default;">
+                                <img src="{{ url_for('static', filename='images/vankari.jpg') }}" alt="The Vankari Debt Cover">
+                            </div>
+                        </div>
+                        
+                        <div class="book-info">
+                            <span class="book-tag" style="background: var(--dark); color: var(--white); border: none;">VOLUME 1</span>
+                            <h3>The Beginning</h3>
+                            <p>A dark thriller set against the historical backdrop of Indore and Patalpani. Five souls, bound by deadly secrets and a vengeful hunter, are forced into an ancient cave system where they must face the chilling truths of the Vankari tribe.</p>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.1);">
+                                <div><h5>Genre</h5><p style="font-weight: 700; margin-bottom: 0;">Dark Thriller / Mystery</p></div>
+                                <div><h5>Status</h5><p style="font-weight: 700; margin-bottom: 0;">Available Now</p></div>
+                            </div>
+                            <a href="https://amzn.in/d/0giL8p4F" target="_blank" class="btn btn-primary" style="background: var(--dark);">Buy on Amazon</a>
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+
+        </div>
+    </section>
+
+    <!-- FOOTER NAV BACK TO MAIN -->
+    <section class="section-pad" style="text-align: center; border-top: 1px solid rgba(0,0,0,0.1);">
+        <div class="container">
+            <h2 style="margin-bottom: 20px; color: var(--dark);">Explore My Technical Journey</h2>
+            <a href="{{ url_for('home') }}" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to Tech Portfolio</a>
+        </div>
+    </section>
+
+
+    <!-- =========================================
+         ALL MODALS
+    ========================================= -->
+
+    <!-- 1. 3D BOOK FLIP MODAL -->
+    <div id="book-modal" class="book-modal desktop-only-modal">
+        <div class="modal-close" id="close-book-modal">&times;</div>
+        <div class="modal-hint hint-left" id="hint-left"><i class="fas fa-hand-pointer"></i> Click cover to flip</div>
+        <div class="modal-hint hint-right" id="hint-right">Scroll to open <i class="fas fa-arrow-down"></i></div>
+        <div class="modal-hint hint-bottom" id="hint-zoom"><i class="fas fa-search-plus"></i> Click any page to Zoom In</div>
+        <div class="book-stage">
+            <div class="realistic-book" id="realistic-book" data-state="0">
+                <div class="book-leaf leaf-cover">
+                    <div class="leaf-face front"><img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Cover"></div>
+                    <div class="leaf-face back"><img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover"></div>
+                </div>
+                <div class="book-spread-view">
+                    <div class="spread-left-blank"></div>
+                    <div class="spread-right-content">
+                        <img src="{{ url_for('static', filename='images/1.png') }}" class="book-page page-1 zoomable" alt="Page 1">
+                        <img src="{{ url_for('static', filename='images/2.png') }}" class="book-page page-2 zoomable" alt="Page 2">
+                        <img src="{{ url_for('static', filename='images/3.png') }}" class="book-page page-3 zoomable" alt="Page 3">
+                        <img src="{{ url_for('static', filename='images/4.png') }}" class="book-page page-4 zoomable" alt="Page 4">
+                    </div>
+                </div>
+                <div class="final-back-cover zoomable"><img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover Final"></div>
+            </div>
+        </div>
+        <div id="zoom-overlay" class="zoom-overlay"><div class="zoom-close">&times;</div><img id="zoom-img" src="" alt="Zoomed Content"></div>
+        <div class="buy-popup" id="buy-popup">
+            <div class="popup-content">
+                <h3>Fascinated by the preview?</h3>
+                <a href="https://amzn.in/d/0fvoH0jz" target="_blank" class="btn btn-primary" onclick="document.getElementById('close-book-modal').click()">Buy on Amazon</a>
+                <button class="btn-text" id="restart-book">Read Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. SANATAN VIDEO MODAL -->
+    <div id="sanatan-video-modal" class="custom-series-modal">
+        <div class="modal-backdrop"></div>
+        <div class="sanatan-modal-content">
+            <div class="modal-close-btn" id="close-sanatan-modal">&times;</div>
+            <div class="video-container">
+                <iframe id="sanatan-yt-iframe" src="https://www.youtube.com/embed/L7UgZtzDt0k?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+             <div class="sanatan-modal-text">
+                <h3 class="modal-gold-title">Decoding the Eternal Way of Living</h3>
+                <p class="lead-text">Is Sanatan Dharma merely a collection of archaic rituals, or is it the most sophisticated, scientifically grounded blueprint for human existence ever conceived?</p>
+                <p>In the <strong>Sanatan</strong> series, author Anuj Rawal bridges the seemingly impossible gap between the logic-driven world of modern science and the profound, timeless wisdom of the Vedic Rishis.</p>
+                <div class="sanatan-pillars">
+                    <div class="pillar">
+                        <h4><i class="fas fa-dna"></i> The Biology of Belief</h4>
+                        <p>Discover how ancient practices trigger cellular renewal (Autophagy) and align our circadian rhythms with the cosmos.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4><i class="fas fa-brain"></i> The Psychology of Rituals</h4>
+                        <p>Explore how the 16 Samskaras act as vital neurological anchor points guiding human psychology.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4><i class="fas fa-atom"></i> The Physics of Space</h4>
+                        <p>Unveil the quantum reality of Vastu Shastra. Far from mere superstition, it is the sacred geometry of aligning our physical living spaces.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4><i class="fas fa-skull"></i> The Science of Dark Energies</h4>
+                        <p>Demystify the taboo realms of the occult and 'black magic' through the actual physics of frequency and energy transfer.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. VANKARI VIDEO MODAL (DARK THEME) -->
+    <div id="vankari-video-modal" class="custom-series-modal vankari-modal-theme">
+        <div class="modal-backdrop" id="vankari-backdrop"></div>
+        <div class="sanatan-modal-content vankari-modal-box">
+            <div class="modal-close-btn" id="close-vankari-modal">&times;</div>
+            
+            <!-- LOCAL VIDEO PLAYER (CLEANED UP) -->
+            <div class="video-container" style="background: #000;">
+                <video id="vankari-video-player" controls playsinline preload="auto" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    <source src="{{ url_for('static', filename='videos/vankari.mp4') }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+             <div class="sanatan-modal-text">
+                <h3 class="modal-gold-title" style="color: #ff3333; text-shadow: 0 2px 10px rgba(255,51,51,0.3);">Welcome to the Darkness</h3>
+                <p class="lead-text" style="color: #ccc;">"Some secrets are buried for a reason. Some debts are paid in blood."</p>
+                <p><strong>The Vankari Debt</strong> takes you on a chilling journey into the uncharted depths of history and human survival. Set against the historical backdrop of Indore and Patalpani, this dark thriller explores what happens when modern lives intersect with an ancient, forgotten tribe.</p>
+                
+                <div class="sanatan-pillars" style="background: rgba(255, 51, 51, 0.03); border-color: rgba(255, 51, 51, 0.1);">
+                    <div class="pillar">
+                        <h4 style="color: #ff4d4d;"><i class="fas fa-dungeon"></i> The Ancient Caves</h4>
+                        <p>A claustrophobic labyrinth beneath Patalpani where the light dies, and ancient traps await those who dare to enter.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4 style="color: #ff4d4d;"><i class="fas fa-history"></i> The Vankari Tribe</h4>
+                        <p>A fierce, forgotten community bound by blood-oaths, guarding a historical treasure and a curse that spans generations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> 
+
+<!-- MOBILE BOOK MODAL -->
+<div id="mobile-book-modal" class="mobile-book-modal">
+    <div class="modal-header-mobile">
+        <span>Book Preview</span>
+        <div class="modal-close" id="close-mobile-book-modal">&times;</div>
+    </div>
+    <div class="mobile-book-scroll">
+        <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Front Cover">
+        <img src="{{ url_for('static', filename='images/1.png') }}" alt="Page 1">
+        <img src="{{ url_for('static', filename='images/2.png') }}" alt="Page 2">
+        <img src="{{ url_for('static', filename='images/3.png') }}" alt="Page 3">
+        <img src="{{ url_for('static', filename='images/4.png') }}" alt="Page 4">
+        <img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover">
+        <div class="mobile-buy-cta">
+            <h3>Enjoyed the preview?</h3>
+            <a href="https://amzn.in/d/0fvoH0jz" target="_blank" class="btn btn-primary" style="width: 100%;" id="mobile-buy-btn">Buy on Amazon</a>
+        </div>
+    </div>
+</div> 
+{% endblock %}
