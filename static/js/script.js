@@ -418,4 +418,30 @@ document.addEventListener('DOMContentLoaded', () => {
         const observer = new IntersectionObserver(observerCallback, options);
         observer.observe(vankariZone);
     }
+
+    // =========================================
+    //   11. SMART DUSTBIN IMAGE SLIDESHOW
+    // =========================================
+    const project2Slider = document.getElementById('project2-slider');
+    if (project2Slider) {
+        const images = [
+            project2Slider.getAttribute('data-img1'),
+            project2Slider.getAttribute('data-img2'),
+            project2Slider.getAttribute('data-img3')
+        ].filter(Boolean);
+        
+        if (images.length > 1) {
+            let currentIndex = 0;
+            // Set transitions for both hover transform and slideshow opacity
+            project2Slider.style.transition = 'opacity 0.5s ease, transform 0.8s ease';
+            setInterval(() => {
+                project2Slider.style.opacity = 0;
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    project2Slider.src = images[currentIndex];
+                    project2Slider.style.opacity = 1;
+                }, 500);
+            }, 3500);
+        }
+    }
 });
