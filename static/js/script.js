@@ -420,10 +420,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================
-    //   11. SMART DUSTBIN IMAGE SLIDESHOW
+    //   11. SMART DUSTBIN IMAGE SLIDESHOW (SEAMLESS VIDEO-LIKE CROSSFADE)
     // =========================================
     const project2Slider = document.getElementById('project2-slider');
     if (project2Slider) {
+        const parent = project2Slider.parentElement;
         const images = [
             project2Slider.getAttribute('data-img1'),
             project2Slider.getAttribute('data-img2'),
@@ -431,17 +432,55 @@ document.addEventListener('DOMContentLoaded', () => {
         ].filter(Boolean);
         
         if (images.length > 1) {
+            // Remove the original single image element
+            project2Slider.remove();
+            
+            // Set parent style to relative to properly contain absolute kids
+            parent.style.position = 'relative';
+            
+            // Create image elements for all slideshow images and stack them
+            const imgElements = images.map((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = "Smart Dustbin Frame " + (index + 1);
+                img.style.position = 'absolute';
+                img.style.top = '0';
+                img.style.left = '0';
+                img.style.width = '100%';
+                img.style.height = '100%';
+                img.style.objectFit = 'cover';
+                img.style.objectPosition = 'center';
+                // Transition opacity for crossfade, transform for hover zoom
+                img.style.transition = 'opacity 1s ease-in-out, transform 0.8s ease';
+                img.style.opacity = index === 0 ? '1' : '0';
+                img.style.zIndex = index === 0 ? '2' : '1';
+                parent.appendChild(img);
+                return img;
+            });
+            
             let currentIndex = 0;
-            // Set transitions for both hover transform and slideshow opacity
-            project2Slider.style.transition = 'opacity 0.5s ease, transform 0.8s ease';
             setInterval(() => {
-                project2Slider.style.opacity = 0;
+                const nextIndex = (currentIndex + 1) % imgElements.length;
+                
+                // Set z-index to stack the next image above the others before fading in
+                imgElements[nextIndex].style.zIndex = '3';
+                imgElements[currentIndex].style.zIndex = '2';
+                
+                // Fade next in
+                imgElements[nextIndex].style.opacity = '1';
+                
+                // Fade previous out
+                imgElements[currentIndex].style.opacity = '0';
+                
+                // Reset z-indices after transition completes to keep layers clean
                 setTimeout(() => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    project2Slider.src = images[currentIndex];
-                    project2Slider.style.opacity = 1;
-                }, 500);
-            }, 3500);
+                    imgElements.forEach((img, idx) => {
+                        img.style.zIndex = idx === nextIndex ? '2' : '1';
+                    });
+                }, 1000);
+                
+                currentIndex = nextIndex;
+            }, 2500); // Shift every 2.5 seconds with 1.0s overlap transition
         }
     }
 });
