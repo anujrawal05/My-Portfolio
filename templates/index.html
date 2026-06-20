@@ -215,12 +215,10 @@
                     <div class="flippable-card" id="card-2">
                         <div class="card-front">
                              <div class="project-img">
-                                <img id="project2-slider" 
-                                     src="{{ url_for('static', filename='images/project2.jpg') }}" 
-                                     data-img1="{{ url_for('static', filename='images/project2.jpg') }}"
-                                     data-img2="{{ url_for('static', filename='images/project2-2.jpg') }}"
-                                     data-img3="{{ url_for('static', filename='images/project2-3.jpg') }}"
-                                     alt="Smart Dustbin">
+                                <video id="project2-video" autoplay loop muted playsinline>
+                                    <source src="{{ url_for('static', filename='images/project2.mp4') }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
                             </div>
                             <div class="project-content">
                                 <span class="project-category">Hardware</span>

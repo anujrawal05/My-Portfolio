@@ -415,8 +415,8 @@ body.vankari-active .vankari-subheading {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;
 }
 .project-img { height: 240px; width: 100%; overflow: hidden; position: relative; }
-.project-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: 0.8s; }
-.card-front:hover .project-img img { transform: scale(1.1) rotate(2deg); }
+.project-img img, .project-img video { width: 100%; height: 100%; object-fit: cover; object-position: center; transition: 0.8s; }
+.card-front:hover .project-img img, .card-front:hover .project-img video { transform: scale(1.1) rotate(2deg); }
 .project-category {
     background: var(--accent); color: var(--white); padding: 4px 12px;
     border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
