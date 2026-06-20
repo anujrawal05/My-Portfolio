@@ -1,6 +1,58 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Anuj Rawal | Engineer & Storyteller Portfolio</title>
+    <meta name="description" content="Official portfolio of Anuj Rawal - B.Tech student, author of 'Sanatan', and innovator. Exploring the fusion of science, spirituality, and creativity.">
+    <meta name="author" content="Anuj Rawal">
 
-{% block content %}
+    <meta property="og:title" content="Anuj Rawal - Personal Portfolio">
+    <meta property="og:description" content="Engineer by pursuit, storyteller by soul. Exploring the fusion of science and spirituality.">
+    <meta property="og:image" content="static/images/profile.jpg">
+    <meta property="og:url" content="https://your-website-url.com">
+
+    <link rel="shortcut icon" href="static/images/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+    <!-- =========================================
+         DEFAULT NAVBAR (FOR TECH PORTFOLIO)
+    ========================================= -->
+    
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Portfolio<span>.</span></a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#resume" class="nav-link">Journey</a></li>
+                <li><a href="https://a-r-publications-by-anujrawal.onrender.com/" target="_blank" class="nav-link">My Books</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link btn-nav">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+
+    <div class="flash-container">
+        
+            
+        
+    </div>
+
+    <main>
+        
 
 <div class="desktop-view">
     <section id="home" class="hero">
@@ -20,7 +72,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Anuj Profile" class="floating-img">
+                <img src="static/images/profile.jpg" alt="Anuj Profile" class="floating-img">
             </div>
         </div>
     </section>
@@ -168,8 +220,8 @@
                 
                 <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 40px;">
                     <!-- Mini visual cues for the books -->
-                    <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Sanatan" style="width: 120px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-                    <img src="{{ url_for('static', filename='images/vankari.jpg') }}" alt="Vankari Debt" style="width: 120px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                    <img src="static/images/book.jpg" alt="Sanatan" style="width: 120px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+                    <img src="static/images/vankari.jpg" alt="Vankari Debt" style="width: 120px; border-radius: 5px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
                 </div>
 
                 <a href="https://a-r-publications-by-anujrawal.onrender.com/" target="_blank" class="btn btn-primary" style="font-size: 1.1rem; padding: 16px 40px;">
@@ -188,7 +240,7 @@
                     <div class="flippable-card" id="card-1">
                         <div class="card-front">
                             <div class="project-img">
-                                <img src="{{ url_for('static', filename='images/project1.jpg') }}" alt="Short Film">
+                                <img src="static/images/project1.jpg" alt="Short Film">
                             </div>
                             <div class="project-content">
                                 <span class="project-category" style="background: #e63946;">Film</span>
@@ -199,7 +251,7 @@
                         </div>
                         <div class="card-back">
                             <div class="card-back-bg">
-                                <img src="{{ url_for('static', filename='images/project1.jpg') }}" alt="Background">
+                                <img src="static/images/project1.jpg" alt="Background">
                             </div>
                             <div class="card-back-content">
                                 <i class="fas fa-times close-card"></i>
@@ -216,10 +268,10 @@
                         <div class="card-front">
                              <div class="project-img">
                                 <img id="project2-slider" 
-                                     src="{{ url_for('static', filename='images/project2.jpg') }}" 
-                                     data-img1="{{ url_for('static', filename='images/project2.jpg') }}"
-                                     data-img2="{{ url_for('static', filename='images/project2-2.jpg') }}"
-                                     data-img3="{{ url_for('static', filename='images/project2-3.jpg') }}"
+                                     src="static/images/project2.jpg" 
+                                     data-img1="static/images/project2.jpg"
+                                     data-img2="static/images/project2-2.jpg"
+                                     data-img3="static/images/project2-3.jpg"
                                      alt="Smart Dustbin">
                             </div>
                             <div class="project-content">
@@ -231,7 +283,7 @@
                         </div>
                         <div class="card-back">
                             <div class="card-back-bg">
-                                <img src="{{ url_for('static', filename='images/project2.jpg') }}" alt="Background">
+                                <img src="static/images/project2.jpg" alt="Background">
                             </div>
                             <div class="card-back-content">
                                 <i class="fas fa-times close-card"></i>
@@ -250,7 +302,7 @@
                     <div class="flippable-card" id="card-3">
                         <div class="card-front">
                             <div class="project-img">
-                                <img src="{{ url_for('static', filename='images/eyantra.png') }}" alt="e-Yantra Robotics">
+                                <img src="static/images/eyantra.png" alt="e-Yantra Robotics">
                             </div>
                             <div class="project-content">
                                 <span class="project-category" style="background: #6f42c1;">Coding</span>
@@ -261,7 +313,7 @@
                         </div>
                         <div class="card-back">
                             <div class="card-back-bg">
-                                <img src="{{ url_for('static', filename='images/eyantra.png') }}" alt="Background">
+                                <img src="static/images/eyantra.png" alt="Background">
                             </div>
                             <div class="card-back-content">
                                 <i class="fas fa-times close-card"></i>
@@ -345,23 +397,23 @@
             <div class="realistic-book" id="realistic-book" data-state="0">
                 <div class="book-leaf leaf-cover">
                     <div class="leaf-face front">
-                        <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Cover">
+                        <img src="static/images/book.jpg" alt="Cover">
                     </div>
                     <div class="leaf-face back">
-                        <img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover">
+                        <img src="static/images/book-back.jpg" alt="Back Cover">
                     </div>
                 </div>
                 <div class="book-spread-view">
                     <div class="spread-left-blank"></div>
                     <div class="spread-right-content">
-                        <img src="{{ url_for('static', filename='images/1.png') }}" class="book-page page-1 zoomable" alt="Page 1">
-                        <img src="{{ url_for('static', filename='images/2.png') }}" class="book-page page-2 zoomable" alt="Page 2">
-                        <img src="{{ url_for('static', filename='images/3.png') }}" class="book-page page-3 zoomable" alt="Page 3">
-                        <img src="{{ url_for('static', filename='images/4.png') }}" class="book-page page-4 zoomable" alt="Page 4">
+                        <img src="static/images/1.png" class="book-page page-1 zoomable" alt="Page 1">
+                        <img src="static/images/2.png" class="book-page page-2 zoomable" alt="Page 2">
+                        <img src="static/images/3.png" class="book-page page-3 zoomable" alt="Page 3">
+                        <img src="static/images/4.png" class="book-page page-4 zoomable" alt="Page 4">
                     </div>
                 </div>
                 <div class="final-back-cover zoomable">
-                     <img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover Final">
+                     <img src="static/images/book-back.jpg" alt="Back Cover Final">
                 </div>
             </div>
         </div>
@@ -434,12 +486,12 @@
         <div class="modal-close" id="close-mobile-book-modal">&times;</div>
     </div>
     <div class="mobile-book-scroll">
-        <img src="{{ url_for('static', filename='images/book.jpg') }}" alt="Front Cover">
-        <img src="{{ url_for('static', filename='images/1.png') }}" alt="Page 1">
-        <img src="{{ url_for('static', filename='images/2.png') }}" alt="Page 2">
-        <img src="{{ url_for('static', filename='images/3.png') }}" alt="Page 3">
-        <img src="{{ url_for('static', filename='images/4.png') }}" alt="Page 4">
-        <img src="{{ url_for('static', filename='images/book-back.jpg') }}" alt="Back Cover">
+        <img src="static/images/book.jpg" alt="Front Cover">
+        <img src="static/images/1.png" alt="Page 1">
+        <img src="static/images/2.png" alt="Page 2">
+        <img src="static/images/3.png" alt="Page 3">
+        <img src="static/images/4.png" alt="Page 4">
+        <img src="static/images/book-back.jpg" alt="Back Cover">
         <div class="mobile-buy-cta">
             <h3>Enjoyed the preview?</h3>
             <a href="https://amzn.in/d/0fvoH0jz" target="_blank" class="btn btn-primary" style="width: 100%;" id="mobile-buy-btn">Buy on Amazon</a>
@@ -457,7 +509,7 @@
         <div class="cinematic-layout">
             <div class="cinematic-poster-wrapper">
                 <div class="poster-glow"></div> <!-- The Magic Glow Effect -->
-                <img src="{{ url_for('static', filename='images/vankari.png') }}" alt="The Vankari Debt Poster">
+                <img src="static/images/vankari.png" alt="The Vankari Debt Poster">
             </div>
             
             <div class="cinematic-text">
@@ -472,4 +524,74 @@
     </div>
 </div>
 
-{% endblock %}
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <h3>Anuj Rawal</h3>
+                <p>Engineer by pursuit, storyteller by soul. On a journey to unite science, spirituality, and creativity.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About Me</a></li>
+                    <li><a href="books.html">My Writings</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect</h3>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/anujrawal-ar" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/anujrawal.ar" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:rawalanuj50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Anuj Rawal. Built with intellect & Shraddha.</p>
+        </div>
+    </footer>
+
+    <script src="static/js/script.js"></script>
+
+    <!-- Audio elements available globally on all pages -->
+<audio id="sanatan-global-audio" src="static/audio/sanatan-sound.mp3" preload="auto"></audio>
+<audio id="vankari-global-audio" src="static/audio/vankari-sound.mp3" preload="auto"></audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Check if the previous page left a "pending" sound request
+    const pendingSound = localStorage.getItem('pending_audio_type');
+    
+    if (pendingSound) {
+        const audio = document.getElementById(pendingSound + '-global-audio');
+        if (audio) {
+            // 2. Attempt to play as soon as the page loads
+            audio.play()
+            .then(() => {
+                // Clear the memory so it doesn't play again on refresh
+                localStorage.removeItem('pending_audio_type');
+            })
+            .catch(error => {
+                console.log("Autoplay blocked. Sound will play on first user interaction.");
+                
+                // 3. Browser fallback: If blocked, play on the very first click/touch
+                const playOnInteraction = () => {
+                    audio.play();
+                    localStorage.removeItem('pending_audio_type');
+                    document.removeEventListener('click', playOnInteraction);
+                    document.removeEventListener('touchstart', playOnInteraction);
+                };
+                document.addEventListener('click', playOnInteraction);
+                document.addEventListener('touchstart', playOnInteraction);
+            });
+        }
+    }
+});
+</script>
+
+</body>
+</html>
